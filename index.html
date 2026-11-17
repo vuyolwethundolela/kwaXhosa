@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KwaXhosa – Imicimbi yesintu</title>
+<meta name="description" content="Find and post Xhosa traditional events near you: umgidi, umsebenzi, intonjane, umbhaco and more.">
+<link rel="icon" href="icon.svg" type="image/svg+xml"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js"></script><script src="config.js"></script><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><meta name="theme-color" content="#1A1412">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#FBF5EA;--surface:#fff;--ink:#1A1412;--muted:#5A4E46;--orange:#D9731F;--orange-t:#B84E0A;--blue:#1E4D9B;--red:#B3261E;--line:#E6D9C3;--emblem-ring:#1A1412;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1A1412;--surface:#27201C;--ink:#FBF5EA;--muted:#CDBFB0;--orange-t:#F0954A;--blue:#8FB2F0;--red:#F28B82;--line:#43372F;--emblem-ring:#FBF5EA}}
+:root[data-theme="dark"]{--bg:#1A1412;--surface:#27201C;--ink:#FBF5EA;--muted:#CDBFB0;--orange-t:#F0954A;--blue:#8FB2F0;--red:#F28B82;--line:#43372F;--emblem-ring:#FBF5EA}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Inter,system-ui,sans-serif;color-scheme:light dark}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:800;line-height:1.15;margin:0 0 .5rem}
+h1{font-size:clamp(40px,7vw,64px);letter-spacing:-.03em;line-height:1.05}h2{font-size:28px;letter-spacing:-.02em}h3{font-size:20px;letter-spacing:-.01em}
+a{color:var(--blue)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1rem}
+header.top{background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:60px;gap:.5rem}
+nav{display:flex;gap:.25rem;flex-wrap:wrap}
+nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .7rem;color:var(--ink);text-decoration:none;font-weight:600;border-radius:8px}
+nav a[aria-current=page]{color:var(--orange-t)}
+.brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;min-height:44px}
+.wm{font:800 28px/1 Fraunces,Georgia,serif}
+.wm .k{color:var(--ink)}.wm .x{color:var(--orange-t)}.wm .h{color:var(--blue)}.wm .o{color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:44px;padding:0 1.1rem;border:2px solid var(--ink);border-radius:8px;background:var(--surface);color:var(--ink);font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none}
+.btn.pri{background:var(--orange-t);border-color:var(--orange-t);color:#fff}
+.btn.blue{background:var(--blue);border-color:var(--blue);color:#fff}
+:root[data-theme=dark] .btn.pri,:root:not([data-theme=light]) .btn.pri{color:#1A1412}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.band{height:14px;margin:1.5rem 0;background-repeat:repeat-x;background-size:auto 14px}
+.hero{padding:2rem 0 1rem;display:grid;gap:1.25rem}
+.hero p.lead{font-size:20px;color:var(--muted);max-width:52ch;margin:0}
+.search{display:flex;flex-wrap:wrap;gap:.5rem}
+.search input{flex:1 1 220px}
+input,select,textarea{width:100%;min-height:44px;padding:.55rem .75rem;border:2px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit}
+textarea{min-height:90px}
+label{display:block;font-weight:600;margin:0 0 .25rem}
+.field{margin-bottom:1rem}.hint{font-size:14px;color:var(--muted);margin:.2rem 0 0}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1rem;display:flex;flex-direction:column;gap:.35rem}
+.meta{color:var(--muted);font-size:14px;margin:0}
+.chip{display:inline-block;padding:.1rem .6rem;border-radius:8px;border:1px solid var(--line);font-size:12px;font-weight:600;color:var(--orange-t);width:fit-content}
+.dist{font-weight:700;color:var(--blue)}
+.ad{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:1rem;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:.25rem}
+.ad small{color:var(--orange-t);font-weight:600}
+.filters{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:1rem 0}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0}
+.tabs button{min-height:44px;padding:0 1rem;border-radius:8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:600 16px Inter;cursor:pointer}
+.tabs button[aria-pressed=true]{border-color:var(--orange-t);background:var(--orange-t);color:#fff}
+:root[data-theme=dark] .tabs button[aria-pressed=true]{color:#1A1412}
+.brands{display:flex;flex-wrap:wrap;gap:.6rem}
+.brand-chip{padding:.6rem 1rem;border:2px solid var(--line);border-radius:8px;background:var(--surface);font:800 16px Fraunces,serif}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.gal div{aspect-ratio:1;border-radius:8px;display:flex;align-items:flex-end;padding:.5rem;font-weight:600;color:#fff;font-size:14px}
+.cta{background:var(--ink);color:var(--bg);border-radius:16px;padding:1.5rem;display:grid;gap:.75rem;margin:2rem 0}
+.cta h2{color:var(--bg)}
+.cta .btn{border-color:var(--orange)}
+#toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.75rem 1.1rem;border-radius:8px;z-index:9;display:none}
+.check{display:flex;gap:.6rem;align-items:flex-start}.check input{width:24px;min-height:24px;margin-top:.2rem}
+.hp{position:absolute;left:-9999px}
+.mapbox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:.5rem;overflow-x:auto}
+.err{color:var(--red);font-weight:600;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:2rem;padding:1.5rem 0;color:var(--muted);font-size:14px}
+.two{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:520px){nav a{padding:0 .5rem;font-size:14px}.wm{font-size:20px}}
+
+.loc{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:500 14px Inter,sans-serif;cursor:pointer;max-width:46vw}
+.loc span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.tabbar{display:none}
+.card{padding:0;overflow:hidden;border-left:1px solid var(--line);border-radius:16px;gap:0}
+.card.t-umgidi,.card.t-umsebenzi,.card.t-intonjane,.card.t-umbhaco{border-left-color:var(--line)}
+.card .ph{position:relative;aspect-ratio:16/10;background:var(--line)}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.card .dt{position:absolute;left:16px;bottom:-20px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 12px;text-align:center;font:800 28px/1.1 Fraunces,serif}
+.card .dt span{display:block;font:600 12px Inter,sans-serif;color:var(--orange-t)}
+.card .bd{padding:32px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.card.feat{grid-column:1/-1}
+.hfig{margin:0}.hfig img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;display:block}
+.hfig figcaption{font-size:12px;color:var(--muted);margin-top:8px}
+.gal2{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}.gal2 figure{margin:0}
+.gal2 img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block}.gal2 figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+.gate{position:fixed;inset:0;background:var(--bg);z-index:20;overflow:auto;padding:calc(24px + env(safe-area-inset-top,0px)) 16px 24px}
+.gate[hidden]{display:none}.gate .in{max-width:880px;margin:0 auto}
+.opts{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin:24px 0}
+.opt{border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface);display:flex;flex-direction:column;gap:12px}
+.opt h2{font-size:20px;margin:0}
+.banner{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--surface);margin:16px 0}
+.skip{background:none;border:0;color:var(--blue);font:600 16px Inter,sans-serif;min-height:44px;cursor:pointer;text-decoration:underline}
+@media(min-width:800px){.hero{grid-template-columns:5fr 7fr;align-items:center;gap:48px;padding:48px 0 24px}.hfig img{aspect-ratio:5/6;max-height:680px}.card.feat{grid-column:span 2}.card.feat .ph{aspect-ratio:21/9}}
+@media(max-width:700px){header.top nav{display:none}.tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);z-index:6;padding-bottom:env(safe-area-inset-bottom,0px)}.tabbar a{flex:1;flex-direction:column;justify-content:center;gap:2px;font-size:12px;min-height:56px;padding:0}body{padding-bottom:76px}#toast{bottom:calc(80px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.hl{border:0;border-top:1px solid var(--line);margin:48px 0}.btn:active{transform:scale(.98)}
+.pinmap{height:320px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);isolation:isolate}.pin{width:28px;height:28px;border-radius:50%;background:var(--orange-t);border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="#home" aria-label="KwaXhosa home"><span id="mini"></span><span class="wm" aria-hidden="true"><span class="k">Kwa</span><span class="x">X</span><span class="h">h</span><span class="o">o</span><span class="k">s</span><span class="x">a</span></span></a>
+<nav aria-label="Main"><a href="#home" data-r="home" data-t="nav_home"></a><a href="#events" data-r="events" data-t="nav_events"></a><a href="#post" data-r="post" data-t="nav_post"></a><a href="#gallery" data-r="gallery">Gallery</a></nav><button class="loc" id="locbtn" aria-label="Change location"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="loct">Set location</span></button>
+</div></header>
+<main id="app" class="wrap"></main>
+<footer><div class="wrap"><p><strong>KwaXhosa</strong> – <span data-t="tagline"></span>. <span data-t="foot"></span></p><p class="meta" data-t="popia"></p></div></footer>
+<nav class="tabbar" aria-label="App"><a href="#home" data-r="home"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Home</a><a href="#events" data-r="events"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Near me</a><a href="#post" data-r="post"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Post</a><a href="#gallery" data-r="gallery"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>Gallery</a></nav><div id="gate" class="gate" role="dialog" aria-modal="true" aria-labelledby="gt" hidden></div>
+<div id="toast" role="status"></div>
+<script>
+// ---------- Translations (add isiXhosa as another key) ----------
+const I18N={en:{
+nav_home:"Home",nav_events:"Imicimbi",nav_post:"Post event",tagline:"Imicimbi yesintu",
+foot:"Where Xhosa families find and share traditional events.",
+popia:"Your location is used only in your browser to sort events by distance. It is not stored or sent anywhere (POPIA).",
+hero_h:"Every umgidi, umsebenzi and intonjane, in one place.",
+hero_p:"Find traditional events near you, or post yours so family, neighbours and friends can find the way home.",
+search_ph:"Search by town, family or event",search:"Search",near:"Find events near me",
+near_h:"Upcoming near you",all_h:"Upcoming events",brands_h:"Where to buy near you",brands_p:"Trusted names Xhosa families buy from for the gathering. Alcohol brands are 18+. Please drink responsibly.",
+gal_h:"Gallery",gal_more:"Photos from umgidi, attire, food and ceremonies are coming soon.",
+cta_h:"Hosting a ceremony?",cta_p:"Post your event for free. Guests can see the date, find the venue and message you on WhatsApp.",cta_b:"Post your event",
+locating:"Finding your location…",loc_ok:"Showing events nearest to you.",
+loc_no:"Location is off. Choose your town below and we’ll sort by distance.",town:"Your town or suburb",set_town:"Use this town",
+f_type:"Event type",f_prov:"Province",f_dist:"Distance",f_any:"Any",upcoming:"Upcoming",past:"Past events",list:"List",map:"Map",
+none:"No events match. Try a wider distance or another province.",sponsored:"Sponsored",ad_h:"Your brand here",ad_p:"Reach families planning an umgidi.",
+km:"km away",whatsapp:"Message on WhatsApp",copy:"Copy link",copied:"Link copied",back:"Back to events",
+directions:"Directions from the host",host:"Hosted by",
+post_h:"Post your event",post_p:"Events go live straight away. You can edit or delete them later once accounts are added.",
+l_type:"Event type",l_title:"Event title",l_desc:"Short description",l_host:"Host or family name (optional)",l_date:"Date",l_start:"Start time",l_end:"End time (optional)",
+l_town:"Town or suburb",l_dir:"Directions to the venue",l_dir_h:"For example: turn left at the spaza shop, third gate on the right.",
+l_phone:"WhatsApp or contact number",l_photos:"Photos (up to 3)",l_consent:"I am the host, or have the host’s permission, to show this event publicly.",
+publish:"Publish event",need:"Please complete this field.",need_town:"Choose a town from the list.",need_consent:"Please confirm consent.",max3:"Choose 3 photos or fewer.",
+posted:"Event published. Camagu!",empty:"No events have been posted yet. Be the first to share an umgidi, umsebenzi or intonjane."}};
+const L=(k)=>I18N.en[k]||k;
+
+// ---------- Data ----------
+const TYPES={umgidi:"Umgidi",umcimbi:"Umcimbi",umsebenzi:"Umsebenzi",intonjane:"Intonjane",umbhaco:"Umbhaco",memorial:"Memorial / unveiling",other:"Other"};
+const TOWNS={"Mthatha":[-31.589,28.784,"Eastern Cape"],"Gqeberha":[-33.96,25.60,"Eastern Cape"],"East London":[-33.015,27.912,"Eastern Cape"],"Mdantsane":[-32.95,27.72,"Eastern Cape"],"Cofimvaba":[-31.95,27.58,"Eastern Cape"],"Lusikisiki":[-31.36,29.58,"Eastern Cape"],"Komani":[-31.89,26.88,"Eastern Cape"],"Qonce":[-32.88,27.40,"Eastern Cape"],"Paarl":[-33.73,18.96,"Western Cape"],"Khayelitsha":[-34.04,18.67,"Western Cape"],"Nyanga":[-33.99,18.58,"Western Cape"],"Mbekweni, Paarl":[-33.70,18.99,"Western Cape"],"Soweto":[-26.27,27.86,"Gauteng"],"Alexandra":[-26.10,28.10,"Gauteng"],"Johannesburg":[-26.20,28.05,"Gauteng"],"Durban":[-29.86,31.03,"KwaZulu-Natal"],"Umlazi":[-29.97,30.88,"KwaZulu-Natal"],"Pietermaritzburg":[-29.60,30.38,"KwaZulu-Natal"]};
+const PROV=["Eastern Cape","Western Cape","Gauteng","KwaZulu-Natal"];
+const day=(n)=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+let EVENTS=[];
+const BRANDS=["King Korn","Viceroy","Navada","Iwisa","Ace","SAB"];
+const st={loc:null,locState:"idle",type:"",prov:"",dist:"",tab:"up",view:"list"};
+
+// ---------- Helpers ----------
+const esc=(s)=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const hav=(a,b,c,d)=>{const R=6371,r=Math.PI/180,x=(c-a)*r,y=(d-b)*r,h=Math.sin(x/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(y/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const today=()=>new Date().toISOString().slice(0,10);
+const fmt=(d)=>new Date(d+"T00:00").toLocaleDateString("en-ZA",{weekday:"short",day:"numeric",month:"short",year:"numeric"});
+const toast=(m)=>{const t=document.getElementById("toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",2600)};
+const COLS=["#D9731F","#fff","#1E4D9B","#B3261E"];
+function emblem(size){let t="";for(let i=0;i<12;i++)t+=`<polygon points="50,5 58,22 42,22" fill="${COLS[i%4]}" stroke="#1A1412" stroke-width=".6" transform="rotate(${i*30} 50 50)"/>`;
+return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" role="img" aria-label="KwaXhosa emblem"><circle cx="50" cy="50" r="48" fill="#1A1412"/>${t}<circle cx="50" cy="50" r="22" fill="#FBF5EA"/><circle cx="50" cy="50" r="6.5" fill="#D9731F"/></svg>`}
+function band(){return '<hr class="hl">'}
+function lockup(){return `<div style="display:flex;align-items:center;gap:16px">${emblem(72)}<div><div class="wm" style="font-size:40px"><span class="k">Kwa</span><span class="x">X</span><span class="h">h</span><span class="o">o</span><span class="k">s</span><span class="x">a</span></div><div style="letter-spacing:.3em;font-size:12px;font-weight:600;text-transform:uppercase;color:var(--muted);margin-top:4px">${L("tagline")}</div></div></div>`}
+
+// ---------- Events logic ----------
+function list(){
+ let r=EVENTS.filter(e=>st.tab==="up"?e.date>=today():e.date<today());
+ if(st.type)r=r.filter(e=>e.type===st.type);
+ if(st.prov)r=r.filter(e=>e.prov===st.prov);
+ r=r.map(e=>({...e,km:st.loc?hav(st.loc[0],st.loc[1],e.lat,e.lng):null}));
+ if(st.dist&&st.loc)r=r.filter(e=>e.km<=+st.dist);
+ r.sort((a,b)=>st.loc?a.km-b.km:(st.tab==="up"?a.date.localeCompare(b.date):b.date.localeCompare(a.date)));
+ return r}
+const LQ={"cooking": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwAwCdASoUAAsAPu1iqU2ppaOiMAgBMB2JZQCdACKUp0Y1vr9fTAD8j5T/YPNWqpQEBmW2YSL0JwAbCRf9qMd9J2G98RZSStw25k3p22uyrwPtpHooF3jy96uJ29WsOCwRGQh98AA=", "blankets": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JYwCsACHaiTrQq337D0AAAP7PoZkRqj9OnRgYBTcUqeGY6unMdINL1UZ1tUCczqPUbq38ZhxI9d+1w/WliGoAAAA=", "ceremony": "data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAADQBQCdASoUABIAPu1sqlGppaOiqAqpMB2JbACdMzQwMIJ8BovAEFoxzGs98xrdtHepr1fFHboAAP5bMiImoY6Wl5vJn1bLeD7fYpvXMupmAOgxTIH3CDdXcbXcycenwLZWg8aJuTWhH1fBRqt3MVHPmvr6oQmoQwAlcCXgcLEnnMv2QVGIV79AIU97N2+2qE0i6E0OtD9voUd8+wCnUIbmfWFvpSevoYfFr4xTDTpMQDHg9Nz9GnegPUFBHlP8BwxQEetkd3OFAAAA", "decor": "data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAACQBgCdASoUACQAPu1urVCppqQiqqgBMB2JQBWGcKEjCxV0Wd2sU/3cDwwnR0Wi4IhVdQMxlcZGf+QrB6YwAP7D8R6ymMp+WjHa79j5UnrEE51CXQhOXOdT+pqYB0Vx739Aum9aBkYkmhzDp4I+GIf/6sHuj3TK6ilyIcCnnCH3f8N3V+Qq/CN97qlRRBUipFhpOaPqeraFeVxuvf80BaD1HJpj9Skt93mBrNIjB40HlssQVl7aoWyt3genR+eFf2p+ZLlHSCf9TH/sYpZ6x/Xd+8z2VwnMoMviTE0wsM9jv2EFBpxIBZuyIkYR59I1o/oe27s+5YOP6Jr1IQri2WBAXdiUE10WraOtUAGWIAAAAA=="};
+const pic=(n,alt,sz,eager)=>`<img src="${n}.webp" srcset="${n}-480.webp 480w, ${n}.webp 900w" sizes="${sz}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async" style="background:url(${LQ[n]}) center/cover">`;
+const IMG={umgidi:"ceremony",umsebenzi:"cooking",intonjane:"blankets",umbhaco:"decor",umcimbi:"ceremony",memorial:"cooking",other:"decor"};
+function card(e,f){const d=new Date(e.date+"T00:00");return `<article class="card t-${e.type}${f?" feat":""}"><div class="ph">${pic(IMG[e.type]||"decor","","(min-width:800px) 33vw, 100vw")}<div class="dt">${d.getDate()}<span>${d.toLocaleDateString("en-ZA",{month:"short"})}</span></div></div><div class="bd"><span class="chip">${esc(TYPES[e.type]||e.type)}</span><h3><a href="#event/${e.id}" style="color:inherit">${esc(e.title)}</a></h3><p class="meta">${fmt(e.date)} at ${esc(e.start)}</p><p class="meta">${esc(e.town)}, ${esc(e.prov)}${e.km!=null?` · <span class="dist">${Math.round(e.km)} ${L("km")}</span>`:""}</p></div></article>`}
+function adCard(){return `<aside class="ad" aria-label="${L("sponsored")}"><small>${L("sponsored")}</small><strong style="font:800 20px Fraunces,serif">${L("ad_h")}</strong><span>${L("ad_p")}</span></aside>`}
+function cards(r,max){const out=[];r.slice(0,max||r.length).forEach((e,i)=>{out.push(card(e,i===0));if((i+1)%5===0)out.push(adCard())});return out.join("")}
+function locate(){
+ if(!navigator.geolocation){st.locState="denied";render();return}
+ st.locState="asking";render();
+ navigator.geolocation.getCurrentPosition(p=>{setLoc("Your location",p.coords.latitude,p.coords.longitude)},()=>{st.locState="denied";render()},{timeout:10000,maximumAge:600000});
+}
+function locMsg(){
+ if(st.locState==="asking")return `<p class="meta" role="status">${L("locating")}</p>`;
+ if(st.locState==="ok")return `<p class="meta" role="status">${L("loc_ok")}</p>`;
+ if(st.locState==="denied"||st.locState==="manual"&&!st.loc)return townPicker();
+ return `<div class="banner"><span>Set your location to see events nearest to you.</span><button class="btn" id="banset">Set location</button></div>`}
+function townPicker(){return `<div class="field" style="max-width:420px"><p class="meta">${L("loc_no")}</p><label for="tw">${L("town")}</label><div style="display:flex;gap:.5rem"><input id="tw" list="towns" autocomplete="off"><button class="btn" id="settown">${L("set_town")}</button></div><datalist id="towns">${Object.keys(TOWNS).map(t=>`<option value="${esc(t)}">`).join("")}</datalist></div>`}
+function bindTown(){const b=document.getElementById("settown");if(b)b.onclick=()=>{const v=document.getElementById("tw").value.trim(),t=TOWNS[v];if(t){setLoc(v,t[0],t[1])}else toast(L("need_town"))}}
+
+// ---------- Views ----------
+function home(){
+ const r=list(),near=st.loc?L("near_h"):L("all_h");
+ return `<section class="hero"><div><h1>${L("hero_h")}</h1><p class="lead">${L("hero_p")}</p>
+ <form class="search" role="search" id="sf"><label class="sr" for="q">${L("search")}</label><input id="q" placeholder="${L("search_ph")}"><button class="btn blue" type="submit">${L("search")}</button><button class="btn pri" type="button" id="nearbtn">${L("near")}</button></form>${locMsg()}</div><figure class="hfig">${pic("ceremony","A woman in traditional attire serving at a family gathering","(min-width:800px) 58vw, 100vw",1)}<figcaption>Umcimbi, Eastern Cape</figcaption></figure></section>
+ ${band()}<section><h2>${near}</h2>${r.length?`<div class="grid">${cards(r,6)}</div><p><a class="btn" href="#events">${L("nav_events")}</a></p>`:`<p>${EVENTS.length?L("none"):L("empty")}</p><a class="btn pri" href="#post">${L("cta_b")}</a>`}</section>
+ ${band()}<section><h2>${L("brands_h")}</h2><p class="meta">${L("brands_p")}</p><div class="brands">${BRANDS.map(b=>`<span class="brand-chip">${b}</span>`).join("")}</div></section>
+ ${band()}<section><h2>${L("gal_h")}</h2>${galGrid(3)}<p><a class="btn" href="#gallery">Open gallery</a></p></section>
+ <section class="cta"><h2>${L("cta_h")}</h2><p>${L("cta_p")}</p><a class="btn pri" href="#post" style="width:fit-content">${L("cta_b")}</a></section>`}
+function events(){
+ const r=list(),sel=(id,lab,opts,v)=>`<div><label for="${id}">${lab}</label><select id="${id}"><option value="">${L("f_any")}</option>${opts.map(o=>`<option value="${o[0]}"${String(o[0])===String(v)?" selected":""}>${esc(o[1])}</option>`).join("")}</select></div>`;
+ let body;
+ if(st.view==="map"){body=mapView(r)}else{body=r.length?`<div class="grid">${cards(r)}</div>`:`<p>${EVENTS.length?L("none"):L("empty")}</p><a class="btn pri" href="#post">${L("cta_b")}</a>`}
+ return `<h1 style="margin-top:1.5rem">Imicimbi</h1>${locMsg()}<button class="btn pri" id="nearbtn">${L("near")}</button>
+ <div class="filters">${sel("ft",L("f_type"),Object.entries(TYPES),st.type)}${sel("fp",L("f_prov"),PROV.map(p=>[p,p]),st.prov)}${st.loc?sel("fd",L("f_dist"),[10,25,50,100].map(d=>[d,d+" km"]),st.dist):""}</div>
+ <div class="tabs"><button data-tab="up" aria-pressed="${st.tab==="up"}">${L("upcoming")}</button><button data-tab="past" aria-pressed="${st.tab==="past"}">${L("past")}</button><span style="flex:1"></span><button data-view="list" aria-pressed="${st.view==="list"}">${L("list")}</button><button data-view="map" aria-pressed="${st.view==="map"}">${L("map")}</button></div>${body}`}
+function mapView(r){
+ const la=[-35,-25],lo=[17,32],W=640,H=420,px=(a,b)=>[(b-lo[0])/(lo[1]-lo[0])*W,(la[1]-a)/(la[1]-la[0])*H];
+ const dots=r.map(e=>{const[x,y]=px(e.lat,e.lng);return `<a href="#event/${e.id}"><circle cx="${x}" cy="${y}" r="9" fill="#D9731F" stroke="#1A1412" stroke-width="2"><title>${esc(e.title)}</title></circle></a>`}).join("");
+ const me=st.loc?(()=>{const[x,y]=px(st.loc[0],st.loc[1]);return `<circle cx="${x}" cy="${y}" r="7" fill="#1E4D9B" stroke="#fff" stroke-width="3"/>`})():"";
+ const lab=Object.entries(TOWNS).filter((_,i)=>i%3===0).map(([n,t])=>{const[x,y]=px(t[0],t[1]);return `<text x="${x+10}" y="${y+4}" font-size="11" fill="var(--muted)">${esc(n)}</text>`}).join("");
+ return `<div class="mapbox"><svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:520px" role="img" aria-label="Map of event locations"><rect width="${W}" height="${H}" fill="var(--bg)"/>${lab}${dots}${me}</svg></div><p class="hint">Simple offline map. Full OpenStreetMap map arrives with the Leaflet step.</p>`}
+function detail(id){
+ const e=EVENTS.find(x=>x.id===id);if(!e)return `<p>${L("none")}</p>`;
+ const km=st.loc?Math.round(hav(st.loc[0],st.loc[1],e.lat,e.lng)):null;
+ const wa=`https://wa.me/${esc(String(e.phone).replace(/\D/g,""))}?text=${encodeURIComponent("Hi, I’m asking about "+e.title+" on KwaXhosa")}`;
+ return `<p><a href="#events">${L("back")}</a></p><article class="card t-${e.type}" style="margin-top:.5rem"><span class="chip">${esc(TYPES[e.type]||e.type)}</span><h1>${esc(e.title)}</h1><p><strong>${fmt(e.date)}</strong> at ${esc(e.start)}${e.end?"–"+esc(e.end):""}</p><p>${esc(e.town)}, ${esc(e.prov)}${km!=null?` · <span class="dist">${km} ${L("km")}</span>`:""}</p><p>${esc(e.desc)}</p>${e.host?`<p class="meta">${L("host")} ${esc(e.host)}</p>`:""}
+ <div style="display:flex;gap:.5rem;flex-wrap:wrap"><a class="btn pri" href="${wa}" rel="noopener" target="_blank">${L("whatsapp")}</a><a class="btn" rel="noopener" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=${e.lat},${e.lng}">Get directions</a><button class="btn" id="cp">${L("copy")}</button></div></article>${adCard()}`}
+function post(){
+ const f=(id,lab,inner,h)=>`<div class="field"><label for="${id}">${lab}</label>${inner}${h?`<p class="hint">${h}</p>`:""}<p class="err" id="e_${id}" role="alert"></p></div>`;
+ return `<h1 style="margin-top:1.5rem">${L("post_h")}</h1><p class="lead meta">${L("post_p")}</p><form id="pf" novalidate style="max-width:640px">
+ ${f("type",L("l_type"),`<select id="type" required>${Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${v}</option>`).join("")}</select>`)}
+ ${f("title",L("l_title"),`<input id="title" required maxlength="80">`)}
+ ${f("desc",L("l_desc"),`<textarea id="desc" required maxlength="300"></textarea>`)}
+ ${f("host",L("l_host"),`<input id="host" maxlength="60">`)}
+ <div class="two">${f("date",L("l_date"),`<input id="date" type="date" required min="${today()}">`)}${f("start",L("l_start"),`<input id="start" type="time" required>`)}${f("end",L("l_end"),`<input id="end" type="time">`)}</div>
+ ${f("town",L("l_town"),`<input id="town" list="towns" autocomplete="off" required><datalist id="towns">${Object.keys(TOWNS).map(t=>`<option value="${esc(t)}">`).join("")}</datalist>`,"Choose the nearest town. It centres the map for you.")}
+ <div class="field"><p style="font-weight:600;margin:0 0 4px">Pin the venue</p><p class="hint" style="margin:0 0 8px">Guests get turn-by-turn directions in Google Maps from this pin, so there is no need to type directions.</p><div id="pinmap" class="pinmap" role="application" aria-label="Map. Tap to drop the venue pin."></div><p class="hint" id="pinstat">Tap the map to drop the pin, then drag it to adjust.</p><button type="button" class="btn" id="usegeo" style="margin-top:8px">Use my current location</button><p class="err" id="e_pin" role="alert"></p></div>
+ ${f("gmap","Or paste a Google Maps link",`<input id="gmap" inputmode="url" autocomplete="off" placeholder="https://maps.google.com/...">`,"In Google Maps, open the venue, tap Share, copy the link and paste it here.")}
+ ${f("phone",L("l_phone"),`<input id="phone" type="tel" inputmode="tel" placeholder="082 000 0000" required>`)}
+ ${f("photos",L("l_photos"),`<input id="photos" type="file" accept="image/*" multiple>`)}
+ <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" tabindex="-1" autocomplete="off"></div>
+ <div class="field"><label class="check"><input type="checkbox" id="consent"><span>${L("l_consent")}</span></label><p class="err" id="e_consent" role="alert"></p></div>
+ <button class="btn pri" type="submit">${L("publish")}</button></form>`}
+
+// ---------- Router ----------
+function render(){
+ const h=location.hash.slice(1)||"home",[r,id]=h.split("/"),app=document.getElementById("app");
+ app.innerHTML=r==="events"?events():r==="post"?post():r==="gallery"?gallery():r==="event"?detail(id):home();
+ document.querySelectorAll("nav a").forEach(a=>a.getAttribute("aria-current")&&a.removeAttribute("aria-current"));
+ document.querySelectorAll(`nav a[data-r="${r==="event"?"events":r}"]`).forEach(c=>c.setAttribute("aria-current","page"));
+ bind(r)}
+function bind(r){if(r==="post")initPin();
+ const bs=document.getElementById("banset");if(bs)bs.onclick=()=>openGate();const nb=document.getElementById("nearbtn");if(nb)nb.onclick=locate;bindTown();
+ const sf=document.getElementById("sf");if(sf)sf.onsubmit=e=>{e.preventDefault();location.hash="events"};
+ ["ft:type","fp:prov","fd:dist"].forEach(s=>{const[i,k]=s.split(":"),el=document.getElementById(i);if(el)el.onchange=()=>{st[k]=el.value;render()}});
+ document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;render()});
+ document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>{st.view=b.dataset.view;render()});
+ const cp=document.getElementById("cp");if(cp)cp.onclick=()=>{try{navigator.clipboard.writeText(location.href);toast(L("copied"))}catch(e){}};
+ const pf=document.getElementById("pf");if(pf)pf.onsubmit=submit;
+}
+async function submit(ev){
+ ev.preventDefault();const v=id=>document.getElementById(id),err=(id,m)=>{const x=document.getElementById("e_"+id);if(x)x.textContent=m||""};
+ let ok=true;["title","desc","date","start","phone"].forEach(i=>{const bad=!v(i).value.trim();err(i,bad?L("need"):"");if(bad)ok=false});
+ const t=TOWNS[v("town").value.trim()];err("town",t?"":L("need_town"));if(!t)ok=false;if(!PIN){err("pin","Drop the pin on the venue, or paste a Google Maps link.");ok=false}else if(PIN[0]<-35||PIN[0]>-22||PIN[1]<16||PIN[1]>33){err("pin","That pin is outside South Africa. Please move it.");ok=false}else err("pin","");
+ err("consent",v("consent").checked?"":L("need_consent"));if(!v("consent").checked)ok=false;
+ err("photos",v("photos").files.length>3?L("max3"):"");if(v("photos").files.length>3)ok=false;
+ if(v("website").value)return;
+ if(!ok){const first=document.querySelector(".err:not(:empty)");if(first)first.scrollIntoView({block:"center"});return}
+ const e={id:"u"+Date.now(),type:v("type").value,title:v("title").value.trim(),host:v("host").value.trim(),date:v("date").value,start:v("start").value,end:v("end").value,town:v("town").value.trim(),lat:PIN[0],lng:PIN[1],prov:t[2],desc:v("desc").value.trim(),dir:"",phone:v("phone").value};
+ if(window.sb){const{data,error}=await window.sb.from("events").insert(toRow(e)).select().single();if(error){toast("Couldn’t publish your event. Please try again.");return}e.id=data.id}EVENTS.unshift(e);
+ toast(L("posted"));location.hash="event/"+e.id}
+
+let PIN=null,MAP=null,MK=null;
+const parseGmaps=u=>{try{u=decodeURIComponent(u.trim())}catch(e){}const m=u.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||u.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)||u.match(/[?&](?:q|query|ll|destination)=(-?\d+\.\d+),\s*(-?\d+\.\d+)/);return m?[+m[1],+m[2]]:null};
+function loadLeaflet(){return new Promise((res,rej)=>{if(window.L&&window.L.map)return res();const c=document.createElement("link");c.rel="stylesheet";c.href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css";document.head.appendChild(c);const j=document.createElement("script");j.src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js";j.onload=res;j.onerror=rej;document.head.appendChild(j)})}
+function setPin(la,lo,drag){PIN=[la,lo];const st=document.getElementById("pinstat"),er=document.getElementById("e_pin");if(er)er.textContent="";if(st)st.textContent="Pin set. Drag it to adjust.";if(!MAP)return;if(!MK._map)MK.addTo(MAP);MK.setLatLng([la,lo]);if(!drag)MAP.setView([la,lo],Math.max(MAP.getZoom(),15))}
+async function initPin(){PIN=null;try{if(MAP)MAP.remove()}catch(e){}MAP=null;MK=null;const el=document.getElementById("pinmap");if(!el)return;
+const $=i=>document.getElementById(i);
+$("usegeo").onclick=()=>{if(!navigator.geolocation)return toast("This device can’t share its location. Drop the pin instead.");navigator.geolocation.getCurrentPosition(p=>setPin(p.coords.latitude,p.coords.longitude),()=>toast("Location is off. Drop the pin on the map instead."),{timeout:10000,enableHighAccuracy:true})};
+$("gmap").addEventListener("input",()=>{const v=$("gmap").value.trim(),er=$("e_gmap");er.textContent="";if(!v)return;const c=parseGmaps(v);if(c)setPin(c[0],c[1]);else er.textContent=/goo\.gl|maps\.app/.test(v)?"Short links can’t be read here. Open the link, copy the full address from your browser’s address bar, or drop the pin on the map.":"We couldn’t find a location in that link. Try the Share link from Google Maps, or drop the pin."});
+$("town").addEventListener("input",()=>{const t=TOWNS[$("town").value.trim()];if(t&&MAP&&!PIN)MAP.setView([t[0],t[1]],12)});
+try{await loadLeaflet()}catch(e){el.innerHTML='<p class="meta" style="padding:16px">The map couldn’t load. Paste a Google Maps link or use your current location instead.</p>';return}
+const Lf=window.L;MAP=Lf.map(el,{scrollWheelZoom:false}).setView([-30.5,25],5);
+Lf.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(MAP);
+MK=Lf.marker([-30.5,25],{draggable:true,icon:Lf.divIcon({className:"",html:'<div class="pin"></div>',iconSize:[28,28],iconAnchor:[14,14]})});
+MAP.on("click",ev=>setPin(ev.latlng.lat,ev.latlng.lng,true));MK.on("dragend",()=>{const p=MK.getLatLng();setPin(p.lat,p.lng,true)});
+const t0=TOWNS[$("town").value.trim()];if(t0)MAP.setView([t0[0],t0[1]],12);if(PIN)setPin(PIN[0],PIN[1])}
+const POSTAL={"7646":"Paarl","5600":"Qonce","5099":"Mthatha","2000":"Johannesburg","4001":"Durban","7784":"Khayelitsha"};
+const GAL=[["cooking","Preparing food for the gathering"],["blankets","A blanketed procession in the hills"],["ceremony","Hosting in traditional attire"],["decor","Event décor with woven baskets"]];
+const galGrid=n=>`<div class="gal2">${GAL.slice(0,n).map(g=>`<figure>${pic(g[0],g[1],"(min-width:800px) 25vw, 50vw")}<figcaption>${g[1]}</figcaption></figure>`).join("")}</div>`;
+const gallery=()=>`<h1 style="margin-top:24px">Gallery</h1><p class="lead meta">Photographs from ceremonies, attire and community. Captions and credits are added by KwaXhosa.</p>${galGrid(4)}`;
+function findPlace(q){q=q.trim().toLowerCase();if(!q)return null;if(POSTAL[q])return POSTAL[q];const k=Object.keys(TOWNS);return k.find(x=>x.toLowerCase()===q)||k.find(x=>x.toLowerCase().startsWith(q))||k.find(x=>x.toLowerCase().includes(q))||null}
+function updLoc(){const n=st.locName;document.getElementById("loct").textContent=n?"Near "+n+(TOWNS[n]?", "+TOWNS[n][2]:""):"Set location"}
+function setLoc(n,la,lo){st.loc=[la,lo];st.locName=n;st.locState="ok";try{localStorage.setItem("kx_loc",JSON.stringify({n,lat:la,lng:lo}))}catch(e){}closeGate();updLoc();render()}
+function closeGate(){document.getElementById("gate").hidden=true}
+function openGate(msg){const g=document.getElementById("gate"),opts=Object.keys(TOWNS).map(t=>`<option value="${esc(t)}">`).join("")+Object.entries(POSTAL).map(([k,v])=>`<option value="${k}" label="${v}">`).join("");
+g.innerHTML=`<div class="in">${lockup()}<h1 id="gt" style="margin-top:16px">Where are you?</h1><p class="lead meta">Imicimbi near you come first. Tell us where you are and we’ll sort every event by distance.</p><div class="opts"><section class="opt"><h2>Use my current location</h2><p class="meta">We use your location to show events and stockists near you. We never share it.</p><button class="btn pri" id="g_geo">Use my current location</button>${msg?`<p class="err" role="alert">${msg}</p>`:""}</section><section class="opt"><h2>Enter a location</h2><div><label for="g_q">Town, suburb or postal code</label><input id="g_q" list="gl" autocomplete="off" placeholder="Qonce, Mthatha, Paarl, 7646"><datalist id="gl">${opts}</datalist></div><button class="btn blue" id="g_set">Show events near here</button><p class="err" id="g_err" role="alert"></p></section></div><button class="skip" id="g_skip">Skip for now</button></div>`;
+g.hidden=false;const $=i=>document.getElementById(i);
+$("g_skip").onclick=()=>{try{localStorage.setItem("kx_skip","1")}catch(e){}closeGate();render()};
+$("g_set").onclick=()=>{const p=findPlace($("g_q").value),t=p&&TOWNS[p];if(t)setLoc(p,t[0],t[1]);else $("g_err").textContent="We couldn’t find that place yet. Try a nearby town or a 4-digit postal code."};
+$("g_q").onkeydown=e=>{if(e.key==="Enter")$("g_set").click()};
+$("g_geo").onclick=()=>{if(!navigator.geolocation)return openGate("This device can’t share its location. Enter your town instead.");navigator.geolocation.getCurrentPosition(p=>setLoc("Your location",p.coords.latitude,p.coords.longitude),()=>{openGate("Location is off, so please enter your town or postal code instead.");document.getElementById("g_q").focus()},{timeout:10000,maximumAge:600000})};
+$("g_geo").focus()}
+try{const sv=JSON.parse(localStorage.getItem("kx_loc")||"null");if(sv){st.loc=[sv.lat,sv.lng];st.locName=sv.n;st.locState="ok"}}catch(e){}
+window.sb=null;
+try{if(window.KX_CONFIG&&KX_CONFIG.url&&window.supabase)window.sb=supabase.createClient(KX_CONFIG.url,KX_CONFIG.anonKey)}catch(e){}
+const fromRow=r=>({id:r.id,type:r.type,title:r.title,host:r.host_name||"",date:r.event_date,start:String(r.start_time).slice(0,5),end:r.end_time?String(r.end_time).slice(0,5):"",town:r.town,lat:r.lat,lng:r.lng,prov:r.province||"",desc:r.description,dir:r.directions||"",phone:r.phone});
+const toRow=e=>({type:e.type,title:e.title,host_name:e.host||null,event_date:e.date,start_time:e.start,end_time:e.end||null,town:e.town,province:e.prov,lat:e.lat,lng:e.lng,description:e.desc,directions:e.dir||null,phone:e.phone,consent:true});
+async function loadDb(){if(!window.sb)return;try{const{data,error}=await window.sb.from("events").select("*").eq("status","live");if(!error&&data){EVENTS=data.map(fromRow);render()}}catch(e){}}
+document.getElementById("mini").innerHTML=emblem(36);document.getElementById("locbtn").onclick=()=>openGate();
+document.querySelectorAll("[data-t]").forEach(n=>n.textContent=L(n.dataset.t));
+addEventListener("hashchange",()=>{render();scrollTo(0,0)});
+render();updLoc();loadDb();
+let sk=false;try{sk=localStorage.getItem("kx_skip")}catch(e){}
+if(!st.loc&&!sk)openGate();
+addEventListener("offline",()=>toast("You’re offline. Saved events are still available."));
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script>
+</body>
+</html>
