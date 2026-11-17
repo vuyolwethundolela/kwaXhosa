@@ -1,0 +1,2 @@
+// Supabase: Project URL + publishable key (sb_publishable_...). Never paste the secret key here.
+window.KX_CONFIG={url:"https://sizubicjuqzzjlrtvjtm.supabase.co",anonKey:"sb_publishable__DlLQLbyd_XNu0NWshes4A_JlUc22x1"};
